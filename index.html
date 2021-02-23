@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script src="./promise.js"></script>
+<script>
+        // let p = new MyPromise((resolve,reject)=>{
+        //     console.log("start1")
+        //     // setTimeout(()=>{
+        //     //     resolve("解决")
+        //     //     console.log("异步后")
+        //     // },1000)
+        //     // reject("失败")
+        //     resolve("解决")
+        // })
+        // p.then(val=>{
+        //             return new MyPromise((resolve,reject)=>{
+        //                 setTimeout(()=>{
+        //                     // resolve("reove love resove")
+        //                     reject("promise2 reject")
+        //                 })
+        //              })
+        //     },(res)=>{
+        //     console.log(res,1111)
+        // })
+        // .then(res=>{
+        //     console.log(res,"return resolve  npromies22222")
+        //     },res=>{
+        //     console.log(res,"return rej  npromies22222")}
+        //     )
+    // MyPromise.resolve(new MyPromise((res)=>res("111"))).then(res=>{
+    //     console.log(res)
+    // })
+    // MyPromise.reject("22").then(res=>{
+    //     console.log(res)
+    // })
+  p1 = new MyPromise ((rel,rej)=>{
+      rel(1111)
+  })
+  p2 = new MyPromise ((rel,rej)=>{
+      rej(22222)
+  })
+//   MyPromise.all([p1,p2]).then((res)=>{
+//       console.log(res,"al")
+//   })
+  p3 = new MyPromise ((rel,rej)=>{
+      setTimeout(()=>{
+          rel(1111)
+      },1000)
+  })
+  p4 = new MyPromise ((rel,rej)=>{
+      setTimeout(()=>{
+          rel(22222)
+      },2000)
+  })
+  MyPromise.race([p1,p2]).then((res)=>{
+      console.log(res)
+  })
+</script>
+</html>
